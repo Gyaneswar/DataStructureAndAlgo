@@ -1,0 +1,1 @@
+// this algo is used to find all the prime numbers which comes before N
