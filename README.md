@@ -8,7 +8,7 @@
 ##Casing
 - Java follows certain different casing but in this repo i follow c# standard
 - Class names , function names : Pascal casing
-- varibles : camel casing
+- variables : camel casing
 - global variables : camel casing beginning with a underscore
 
 ### Thanks
