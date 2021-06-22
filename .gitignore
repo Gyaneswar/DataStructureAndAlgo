@@ -14,3 +14,4 @@ Test/test.class
 Sorting/QuickSort.class
 Sorting/MergeSort.class
 Mathematics/AddWithoutPlus.class
+*.class
