@@ -1,23 +1,27 @@
-====================
-c#,
-asp.net core,
-EF core,
-ADO.net,
-sql server,
-azure devops,
-Kubernetes
-=====================
----------------------
-Experience:
----------------------
-Infosys: Currently working with leading PC hardware manufacturer to build
+##Technology
+- Java,
+- c#,
+- asp.net core,
+- EF core,
+- ADO.net,
+- Sql server,
+- Docker,
+- Azure devops,
+- Azure Kubernetes,
+- Data Structures
+
+
+##Experience:
+
+###Infosys: 
+Currently working with leading PC hardware manufacturer to build
 their partner portal.
 
 learnt: gained Experience about asp.net core web apis,azure service bus ,azure blobs,
 ,Ef core,ADO.net,sql server.
 
 
-Notable Projects: 
+###Notable Projects: 
 Built a travel web application where users can see different
 hotels for a particular place and compare and book hotels.
 
@@ -25,18 +29,8 @@ learnt: Gained experience on Angular, typescript, html, css ,
 asp.net core web apis, EF core, ADO.net , sql server
 
 
-
-
-
-
-
-
-
-
-
-
-
-data structures,
-algorithms,
-networking,
-OS,
+##Basic Skills
+- data structures,
+- algorithms,
+- networking,
+- OS
