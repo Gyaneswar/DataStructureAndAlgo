@@ -1,3 +1,4 @@
+//This is a test class to test certain things about java
 import java.util.Arrays;
 
 public class test {
