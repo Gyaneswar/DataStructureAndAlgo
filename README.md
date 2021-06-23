@@ -5,7 +5,7 @@
 - I continously update this repo.
 - Everyone is invited to update this repo.
 
-##Casing
+## Casing
 - Java follows certain different casing but in this repo i follow c# standard
 - Class names , function names : Pascal casing
 - variables : camel casing
