@@ -14,6 +14,6 @@ public class EfficientPower {
             x=x*x;
             n=n/2;            
         }
-        System.out.println(res);
+        System.out.println(res);        
     }
 }
