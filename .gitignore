@@ -15,3 +15,4 @@ Sorting/QuickSort.class
 Sorting/MergeSort.class
 Mathematics/AddWithoutPlus.class
 *.class
+*.vscode
