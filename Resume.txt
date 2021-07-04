@@ -1,36 +1,50 @@
-##Technology
-- Java,
-- c#,
-- asp.net core,
-- EF core,
-- ADO.net,
-- Sql server,
-- Docker,
-- Azure devops,
-- Azure Kubernetes,
-- Data Structures
+Gyaneswar Singh
+Backend Developer
+	 horizontal line 
 
++91-9937340986
+gyaneswarsingh53@gmail.com
+https://github.com/Gyaneswar
+https://www.linkedin.com/in/gyaneswar-s-65237b117/
+	ㅡ
+Skills
+	 horizontal line 
 
-##Experience:
+Language : Java, C#
+Library :  ASP.NET core, EF Core,ADO.NET
+Database : Ms SQL server 
+Cloud  : Docker ,Azure (Container registry ,Kubernetes, Service bus, Functions, Vault)
+	ㅡ
+Experience
+	 horizontal line 
 
-###Infosys: 
-Currently working with leading PC hardware manufacturer to build
-their partner portal.
+Infosys/ Systems Engineer
+October 2020 - PRESENT, Bengaluru,India
+Currently working with leading PC hardware manufacturer to build their partner portal    by creating scalable, efficient, new and enhancing old APIs by improving response time by upto 50% in the APIs. 
+Gained Experience about ASP.NET core web APIs,Azure service bus ,Azure blobs,EF core,ADO.net,SQL server.
+Infosys  / Systems Engineer Intern
+January 2020 - April 2020, Mysore,India
+Built a mini travel web application where users can see different hotels for a particular   place and compare and book hotels.
+Gained experience on Angular, Typescript, HTML, CSS, ASP.NET core web APIs, EF core, ADO.NET, MS SQL server.
+	ㅡ
+Self projects
+	 horizontal line 
 
-learnt: gained Experience about asp.net core web apis,azure service bus ,azure blobs,
-,Ef core,ADO.net,sql server.
+FeedbackApp
+Web Application , Group Project
+Built a web application where users working in a particular organisation can offer their opinion on current projects or organisations. The app also allows users to use hashtags and anonymous opinions as well.
+Gained experience on Angular, Typescript, HTML, CSS, ASP.NET core web APIs, EF core, ADO.NET, MS SQL server
+	ㅡ
+Education
+	 horizontal line 
 
+Bachelor's Degree / Institute of Technical Education & Research
+8.6CGPA, June 2016 - June 2020, Bhubaneswar
+	
 
-###Notable Projects: 
-Built a travel web application where users can see different
-hotels for a particular place and compare and book hotels.
+ㅡ
+Interests
+	 horizontal line 
 
-learnt: Gained experience on Angular, typescript, html, css ,
-asp.net core web apis, EF core, ADO.net , sql server
-
-
-##Basic Skills
-- data structures,
-- algorithms,
-- networking,
-- OS
+PC Gaming enthusiast(DMG in CS GO, Diamond in apex),  
+Participate in competitive coding .
