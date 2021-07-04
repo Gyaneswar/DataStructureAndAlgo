@@ -1,0 +1,23 @@
+//docker command line commands
+
+docker //check if docker is installed or not
+docker pull // pulls the images from docker hub if it is not availble locally
+docker start //restart a container which was already created
+docker stop //stops a conatiner if it is running
+docker ps //check the docker process running
+docker ps -a //check the history or process which runned
+docker images //list of docker images availble locally
+docker run dockertutorial //docker run creates a new container
+docker run dockertutorial:latest //docker run with version
+docker run -d dockertutorial:latest //docker run with detach mode
+docker -d -p6000:6379 dockertutorial:latest // -p allows port binding 6000 is the hardware port and 6379 is the container/application port
+docker -d -p6000:6379 --name whatever-name image-name // --name allows us to use a name for a particular container.
+docker logs nameofcontainer // gets the logs of the container
+docker exec -it containeridorname //gets into the container terminal -it here stands for interactive terminal   
+    - ls
+    - pwd
+    - cd /
+    - ls
+    - env
+
+
