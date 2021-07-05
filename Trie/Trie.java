@@ -42,6 +42,27 @@ public class Trie {
             return false;
     }
 
+    public static void Delete(String word,TrieNode root){
+        boolean temp=false;
+        TrieNode cursor=root;
+        int index=0;
+        for(int i=0;i<word.length();i++){
+            index=(int)word.charAt(i)-97;
+            if(cursor.ch[index]!=null){
+                cursor=cursor.ch[index];
+            }
+            else{
+                return;
+            }                        
+        }
+        for(int i=0;i<26;i++){
+            if(cursor.ch[i]!=null)
+                return;
+        }
+        
+
+    }
+
 
     public static void Processor(String arr[],TrieNode root){
         for(int i=0;i<arr.length;i++){
