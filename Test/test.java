@@ -14,14 +14,14 @@ public class test {
         //String str="1";
 
         
-        ArrayList<Integer> arr=new ArrayList<>();
-        arr.add(0);    
-        arr.add(2);
-        arr.add(1);
-
-        System.out.println(arr);
-        arr.remove(1);
-        System.out.println(arr);
+        // ArrayList<Integer> arr=new ArrayList<>();
+        // arr.add(0);    
+        // arr.add(2);
+        // arr.add(1);
+        if(0==0.0)
+        System.out.println(0%10);
+        // arr.remove(1);
+        // System.out.println(arr);
 
 
         //System.out.println(Arrays.toString(arr));
