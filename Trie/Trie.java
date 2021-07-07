@@ -42,8 +42,10 @@ public class Trie {
             return false;
     }
 
-    public static void Delete(String word,TrieNode root,int index,){
+    public static void Delete(String word,TrieNode root,int index){
         
+        
+        Delete(word, root);
     }
 
 
