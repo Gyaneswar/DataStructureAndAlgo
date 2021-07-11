@@ -5,11 +5,12 @@ public class PowerSet {
         int size=(int)Math.pow(2,str.length());
 
         for(int i=0;i<size;i++){
-            String bin=Integer.toBinaryString(i);
-            bin=String.format("%"+len+"s",bin);
+            //String bin=Integer.toBinaryString(i);
+            //bin=String.format("%"+len+"s",bin);
             //System.out.println(bin);
             for(int k=0;k<len;k++){
-                if(bin.charAt(k)=='1')
+                //if(bin.charAt(k)=='1')
+                if((i & (1<<k))!=0)
                     System.out.print(str.charAt(k));
             }
             System.out.println();

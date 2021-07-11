@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Trie {
     public static void main(String[] args) {
@@ -16,6 +17,16 @@ public class Trie {
 
         TrieNode root=new TrieNode();
         Processor(arr, root);
+
+        System.out.println("Word to delete : ");
+        String del=sc.next();
+        boolean exist=Search(del, root);
+        System.out.println("Does the word exist : "+exist);
+
+        if(exist){   
+            TrieNode copyRoot=root;
+            System.out.println(Delete(del, copyRoot));
+        }        
 
         while(true){
             System.out.print("Enter the pattern to search (exit to quit) : ");
@@ -42,11 +53,39 @@ public class Trie {
             return false;
     }
 
-    public static void Delete(String word,TrieNode root,int index){
-        
-        
-        Delete(word, root);
-    }
+    public static String Delete(String word,TrieNode root){
+            Stack<TrieNode> s=new Stack<>();
+            Stack<Integer> indices=new Stack<>();
+
+            s.push(root);
+            int index=0;
+            for(int i=0;i<word.length();i++){                                
+                index=word.charAt(i)-97;                
+                root=root.ch[index];
+                indices.push(index);
+                s.push(root);
+            }
+            boolean flag=false;
+            for(int k=0;k<s.size();k++){
+                TrieNode temp=s.pop();                
+                for(int i=0;i<26;i++){                    
+                    if(temp.ch[i]!=null)
+                        flag=true;
+                }
+                if(!flag){
+                    TrieNode peek=s.peek();
+                    index=indices.pop();
+                    peek.ch[index]=null;
+                }else{                    
+                    break;
+                }
+            }
+
+            return "Deleted";
+
+            
+
+        }
 
 
     public static void Processor(String arr[],TrieNode root){
