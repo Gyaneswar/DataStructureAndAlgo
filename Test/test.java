@@ -1,5 +1,6 @@
 //This is a test class to test certain things about java
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.ArrayList;
 
 public class test {
@@ -20,11 +21,23 @@ public class test {
         // arr.add(1);
         if(0==0.0)
         System.out.println(0%10);
+
+
+        HashMap<Character,Character> map=new HashMap<>();
+        //String s=map.put('a', 'b');
+        //System.out.println(s);
+        //System.out.println(ch);
+        //char ch1=null;
+        //System.out.println(ch1);
+        System.out.println(map.put('a', 'b'));
+        //System.out.println(map.put(1, 2));
+        //System.out.println(map.put(3, 2));
         // arr.remove(1);
         // System.out.println(arr);
 
+        long temp=Long.valueOf("814748364888") * -1;
 
-        //System.out.println(Arrays.toString(arr));
+        System.out.println(temp);
     }
 
     public static void test(int arr[][]){        
