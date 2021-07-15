@@ -22,6 +22,11 @@ public class test {
         if(0==0.0)
         System.out.println(0%10);
 
+        float a=5;
+        float b=3;
+        float c=a/b;
+        System.out.println(c);
+
 
         HashMap<Character,Character> map=new HashMap<>();
         //String s=map.put('a', 'b');
