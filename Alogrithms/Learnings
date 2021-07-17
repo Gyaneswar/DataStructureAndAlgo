@@ -5,3 +5,7 @@ every number greater than 3 can be represented as a sum of 2 and 3
 every even number greater than 4 can be represented as a sum of two primes 6=3+3
 
 each integer no less than 12 can be expressed as the sum of two composite numbers
+
+
+
+use arrays.stream

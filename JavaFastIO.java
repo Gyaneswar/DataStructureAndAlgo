@@ -5,52 +5,26 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 public class JavaFastIO {
     public static void main(String[] args) {
-        FastReader sc=new FastReader();
+        Solver ans=new Solver();
+        ans.Solve();
+    }
+}
 
-        int t=sc.nextInt();
 
-        while(t>0){
-            
-            t--;
+    class Solver{
+        public void Solve(){
+            FastReader sc=new FastReader();
+            int t=sc.nextInt();
+            while(t>0){
+                System.out.println("ans");
+                t--;
+            }
         }
-    }
 
+        public void go(){
 
-
-    public static void Process(){
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        }
+    
 
     static class FastReader {
         BufferedReader br;
