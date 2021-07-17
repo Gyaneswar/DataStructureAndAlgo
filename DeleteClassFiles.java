@@ -30,7 +30,7 @@ public class DeleteClassFiles {
             }
             
         }else{
-            if(path.contains(".class")){
+            if(path.contains(".class") && !path.contains("DeleteClassFiles.class")){
                 File DELETETHIS = new File(path);
                 System.out.println(DELETETHIS.delete() ? path+": Deleted": path+": Error");                
             }
