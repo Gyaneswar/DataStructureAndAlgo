@@ -6,28 +6,24 @@ public class Div2_730A {
 
         while(t>0){
 
-        int a=sc.nextInt();
-        int b=sc.nextInt();
+            long a=sc.nextLong();
+            long b=sc.nextLong();
 
-        int gcd=Math.abs(a-b);
-            if(a>b) {
-                int temp=a;
+            long gcd=Math.abs(a-b);
+
+            if(a>b){
+                long temp=a;
                 a=b;
                 b=temp;
-            }
-            if(gcd==0){
-                System.out.println(0+" "+0);
-            }
-            else{
-            int down=(a/gcd) * gcd;
+            }            
 
-            int up= (a/gcd +1)* gcd;
-
-            System.out.println(gcd+" "+Integer.min(a-down ,up-a));
-            }
-
-
-
+            long ans=0;
+            if(gcd!=0){
+                long prev=gcd * (a/gcd);
+                long next=gcd * ((a/gcd)+1);
+                ans=Math.min(Math.abs(prev-a), Math.abs(next-a));
+            }            
+            System.out.println(gcd + " "+ans);            
 
             t--;
         }
