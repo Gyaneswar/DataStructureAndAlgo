@@ -37,7 +37,7 @@ public class SegmentTree {
     }
 
     public static int GetSum(int tree[],int qs,int qe,int start,int end,int index){
-        if(qe<start || qs>end)
+        if(qs>end|| qe<start)
             return 0;
         
         if(qs<=start && qe>=end){

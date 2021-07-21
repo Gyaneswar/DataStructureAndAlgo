@@ -19,6 +19,7 @@ public class GcdRangeQuery {
         System.out.println("Enter the range query indexes : ");
         int qs=sc.nextInt();
         int qe=sc.nextInt();
+        System.out.println("GCD : "+GetGcd(tree, qs, qe, 0, n-1, 0));
 
     }
 
@@ -35,15 +36,25 @@ public class GcdRangeQuery {
     }
 
     public static int GetGcd(int tree[],int qs,int qe,int start,int end,int index){
-        if(qs<start && qe<end){
+        if(qs>end || qe<start){
+            return -1;
+        }
 
-            return tree[start];
-            
+        if(qs<=start && qe>=end){
+            return tree[index];
         }
 
 
         int mid=(start+end)/2;
-        return Gcd(GetGcd(tree, qs, qe, start, mid, (index*2)+1),GetGcd(tree, qs, qe, mid+1, end, (index*2)+2));
+        int a=GetGcd(tree, qs, qe, start, mid, (index*2)+1);
+        int b=GetGcd(tree, qs, qe, mid+1, end, (index*2)+2);
+        if(a==-1){
+            return b;
+        }
+        if(b==-1){
+            return a;
+        }
+        return Gcd(a,b);
 
     }
 
