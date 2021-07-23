@@ -19,30 +19,41 @@ public class test {
         // arr.add(0);    
         // arr.add(2);
         // arr.add(1);
-        if(0==0.0)
-        System.out.println(0%10);
+        // if(0==0.0)
+        // System.out.println(0%10);
 
-        float a=5;
-        float b=3;
-        float c=a/b;
-        System.out.println(c);
+        // float a=5;
+        // float b=3;
+        // float c=a/b;
+        // System.out.println(c);
 
 
-        HashMap<Character,Character> map=new HashMap<>();
+        // HashMap<Integer,Integer> map=new HashMap<>();
+        // map.put(2,1);
+        // map.put(2,2);
+        // map.put(1,1);
+
+        // System.out.println(map.toString());
+        
         //String s=map.put('a', 'b');
         //System.out.println(s);
         //System.out.println(ch);
         //char ch1=null;
         //System.out.println(ch1);
-        System.out.println(map.put('a', 'b'));
+        //System.out.println(map.put('a', 'b'));
         //System.out.println(map.put(1, 2));
         //System.out.println(map.put(3, 2));
         // arr.remove(1);
         // System.out.println(arr);
 
-        long temp=Long.valueOf("814748364888") * -1;
+        // long temp=Long.valueOf("814748364888") * -1;
 
-        System.out.println(temp);
+        // System.out.println(temp);
+
+
+        int arr[][]={{1,2},{3,5},{4,6}};
+
+        System.out.println(arr.length);
     }
 
     public static void test(int arr[][]){        
