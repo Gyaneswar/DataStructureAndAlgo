@@ -54,6 +54,10 @@ public class test {
         int arr[][]={{1,2},{3,5},{4,6}};
 
         System.out.println(arr.length);
+
+        int salary[]={1,2,3,4};
+        double max=Arrays.stream(salary).getAsDouble();
+        System.out.println(max);
     }
 
     public static void test(int arr[][]){        
