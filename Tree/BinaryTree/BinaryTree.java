@@ -3,10 +3,10 @@ public class BinaryTree{
     public static void main(String[] args) {   
         Node root=new Node(13);
         Node child1=new Node(8);
-        Node child2=new Node(5);
+        Node child2=new Node(6);
         Node child3=new Node(3);
         Node child4=new Node(5);
-        Node child5=new Node(3);
+        Node child5=new Node(7);
         Node child6=new Node(2);
 
         root.left=child1;
@@ -50,6 +50,8 @@ public class BinaryTree{
         // //check for balanced binary tree if the difference in the height is greater than 1 it is not balanced
         // System.out.println("Is the tree balanced : "+(IsBalanced(root)!=-1?"True":"False"));
 
+
+        //Create a binary tree given a in order and pre order traversal
         int in[]={5,3,6,2,7,4,8};
         int pre[]={2,3,5,6,4,7,8};
         Node createdRoot=ConstTreeInPreOrderTrav(in,pre,0,6);
@@ -57,6 +59,37 @@ public class BinaryTree{
 
         //Spiral Traversal
         SpiralTraversal(root);
+
+        System.out.println();
+
+        //Given a root find the max diameter of the root;
+        System.out.println(Diameter(root));
+
+        //print the maxdiamter
+        System.out.println(maxHeight);
+
+
+        //get the lowest common ancestor
+        LCA(root,3,0);
+
+        //print the lca
+        System.out.println(LCA==null?-1:LCA);
+
+        //Given a node find the path of the node from root
+        ArrayList<Node> path=new ArrayList<>();
+        FindPath(root, path, 3);
+        for(Node i: path)
+            System.out.print(i.data+"->");
+
+        System.out.println();
+
+        ArrayList<Integer> serialized= new ArrayList<>();
+        Serialize(serialized, root);
+        System.out.println(serialized.toString());
+
+
+        Node deserializedRoot=Deserialize(serialized);
+        printTreeIN(deserializedRoot);
     }
 
     public static void printTreeIN(Node root){
@@ -291,6 +324,108 @@ public class BinaryTree{
                 if(curr.right!=null) s1.push(curr.left);
             }   
         }
+    }
+
+    static int maxHeight=Integer.MIN_VALUE;
+    public static int Diameter(Node root){
+        if(root==null)
+            return 0;
+        
+        int left=1+Diameter(root.left);
+        int right=1+Diameter(root.right);
+
+        maxHeight=Math.max(maxHeight,(left+right-1));
+
+        return Math.max(left,right);
+        
+    }
+
+    static Node LCA=null;
+    public static int LCA(Node root,int a,int b){
+        if(root==null)  return -1;
+
+        if(root.data==a){
+            return 1;
+        }
+        if(root.data==b){
+            return 1;
+        }
+
+        int left=LCA(root.left,a,b);
+        int right=LCA(root.right,a,b);
+
+        if(LCA==null && left==1 && right==1)
+            LCA=root;
+        
+
+        if(left==1 || right==1)
+            return 1;
+        
+        return LCA!=null?1:-1;
+    }
+
+    public static boolean FindPath(Node root,ArrayList<Node> path,int n){
+        if(root ==  null) return false;
+
+        path.add(root);
+        if(root.data==n) return true;
+
+        if(FindPath(root.left, path, n) || FindPath(root.right, path, n))
+            return true;
+        
+        path.remove(path.size()-1);
+        return false;
+    }
+
+    // public static int BurnBinaryTree(Node leaf){
+        
+    // }
+
+    public static int CountNodeCompleteBinaryTree(Node root){
+        Node curr=root;
+        int lh=0,rh=0;
+        while(curr!=null){
+            curr=curr.left;
+            lh++;
+        }
+        curr=root;
+        while(curr!=null){
+            curr=curr.right;
+            rh++;
+        }
+
+        if(lh==rh) return (int)Math.pow(2, lh)-1;
+
+        return 1+CountNodeCompleteBinaryTree(root.left)+CountNodeCompleteBinaryTree(root.right);
+    }
+
+    public static void Serialize(ArrayList<Integer> arr,Node root){
+        if(root==null){
+            arr.add(-1);
+            return;
+        }
+
+        arr.add(root.data);
+        Serialize(arr, root.left);
+        Serialize(arr, root.right);
+    }
+
+    static int index=0;
+    public static Node Deserialize(ArrayList<Integer> serialized){
+        if(serialized.get(index)==-1)
+            return null;
+
+
+        Node root=new Node(serialized.get(index));
+        index++;
+        Node left=Deserialize(serialized);
+        index++;
+        Node right=Deserialize(serialized);
+
+        root.left=left;
+        root.right=right;
+
+        return root;
     }
 }   
 class Node{

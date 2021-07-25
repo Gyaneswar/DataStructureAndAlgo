@@ -56,8 +56,18 @@ public class test {
         System.out.println(arr.length);
 
         int salary[]={1,2,3,4};
-        double max=Arrays.stream(salary).getAsDouble();
-        System.out.println(max);
+        //double max=Arrays.stream(salary).getAsDouble();
+        //System.out.println(max);
+
+        ArrayList<Integer> arraylist=new ArrayList<>();
+        arraylist.add(1);
+        arraylist.add(2);
+        arraylist.add(3);
+        arraylist.add(4);
+
+        arraylist.remove(arraylist.size()-1);
+
+        System.out.println(arraylist.toString());
     }
 
     public static void test(int arr[][]){        
