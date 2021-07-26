@@ -11,6 +11,14 @@ public class BST {
 
         System.out.println("Does this element exist : "+Search(root, 6));
         
+
+        Delete(root, 6);
+        PrintIn(root);
+
+        System.out.println();
+
+        int max=Floor(root, 13);
+        System.out.println(max==0? null:max);        
     }
 
     public static void PrintIn(Node root){
@@ -58,7 +66,7 @@ public class BST {
         if(root==null) return null;
 
         if(root.data>x) root.left=Delete(root.left, x);
-        else if(root.data<x) root.right=Delete(root.right, x)
+        else if(root.data<x) root.right=Delete(root.right, x);
         else{
             if(root.left == null) return root.right;
             else if(root.right==null ) return root.left;
@@ -66,12 +74,10 @@ public class BST {
                 Node succ=GetSucc(root);
                 root.data=succ.data;
                 root.right=Delete(root.right, succ.data);
-                return root;
-            }
-        }
-
-
-    }
+            }            
+        }        
+        return root;
+    }    
 
     public static Node GetSucc(Node root){
         Node curr=root;
@@ -80,6 +86,20 @@ public class BST {
             curr=curr.left;            
         }
         return curr;
+    }
+    
+    public static int Floor(Node root,int x){
+        Node curr=root;
+        int max=0;
+        while(curr!=null){
+            if(curr.data==x) return curr.data;
+            if(x>curr.data) curr=curr.right;
+            else curr=curr.left;
+            
+            if(curr.data>max && curr.data<x)
+                max=curr.data;
+        }
+        return max;
     }
 }
 

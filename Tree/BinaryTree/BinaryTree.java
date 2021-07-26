@@ -280,6 +280,7 @@ public class BinaryTree{
             root.left=prev;
             prev.right=root;
         }
+        prev=root;
         ConvertToDoublyLinkedList(root.right);
         return head;
     }
