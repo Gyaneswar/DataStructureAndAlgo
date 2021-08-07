@@ -12,16 +12,19 @@ public class MinHeapInsert{
             arr[i]=sc.nextInt();
             HeapInsert(arr,SIZE);
             SIZE++;
-        }       
+        }     
+        Heapify(arr, 0);  
         
     }    
     public static void Heapify(int arr[],int index){
-        for(int i=index;GetRightChild(i)<arr.length&&(arr[i]>arr[GetLeftChild(i)] || arr[i]>arr[GetRightChild(i)]);){        
+        for(int i=index;
+        GetRightChild(i)<arr.length &&
+        (arr[i]>arr[GetLeftChild(i)] || arr[i]>arr[GetRightChild(i)]);)
+        {        
             if(arr[GetLeftChild(i)]<arr[GetRightChild(i)]){
                 Swap(arr, GetLeftChild(i), i);
                 i=GetLeftChild(i);
             }else{
-                
                 Swap(arr, GetRightChild(i), i);
                 i=GetRightChild(i);
             }            

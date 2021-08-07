@@ -51,23 +51,28 @@ public class test {
         // System.out.println(temp);
 
 
-        int arr[][]={{1,2},{3,5},{4,6}};
+        // int arr[][]={{1,2},{3,5},{4,6}};
 
-        System.out.println(arr.length);
+        // System.out.println(arr.length);
 
-        int salary[]={1,2,3,4};
+        // int salary[]={1,2,3,4};
         //double max=Arrays.stream(salary).getAsDouble();
         //System.out.println(max);
 
-        ArrayList<Integer> arraylist=new ArrayList<>();
-        arraylist.add(1);
-        arraylist.add(2);
-        arraylist.add(3);
-        arraylist.add(4);
+        // ArrayList<Integer> arraylist=new ArrayList<>();
+        // arraylist.add(1);
+        // arraylist.add(2);
+        // arraylist.add(3);
+        // arraylist.add(4);
 
-        arraylist.remove(arraylist.size()-1);
+        // arraylist.remove(arraylist.size()-1);
 
-        System.out.println(arraylist.toString());
+        // System.out.println(arraylist.toString());
+        
+        String s1="abcd";
+        String s2="bc";
+
+        System.out.println(s2.compareTo(s1));
     }
 
     public static void test(int arr[][]){        
