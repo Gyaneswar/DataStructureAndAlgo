@@ -7,6 +7,7 @@ public class Div2_106B {
             String s=sc.next();            
             System.out.println(Sort(s)?"YES":"NO");
         }
+        sc.close();
     }
 
     public static boolean Sort(String s){        

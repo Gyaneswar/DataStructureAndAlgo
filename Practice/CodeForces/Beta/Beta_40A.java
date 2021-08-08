@@ -1,3 +1,5 @@
+package Beta;
+
 import java.util.*;
 public class Beta_40A {
     public static void main(String[] args) {
