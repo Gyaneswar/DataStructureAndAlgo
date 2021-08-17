@@ -22,7 +22,8 @@ public class QuickSort {
         System.out.println(Arrays.toString(arr1));
 
 
-
+        System.out.println(countLomuto);
+        System.out.println(countHoare);
     }
 
     public static void quickSortLomuto(int arr[],int l,int h){
@@ -40,28 +41,29 @@ public class QuickSort {
         }
     }
 
-
+    static int countLomuto=0;
     public static int partitionLomuto(int arr[],int l,int h){
         int pivot=arr[h];
         int i=l-1;        
         for(int j=l;j<h;j++){
 
-            if(arr[j]>=pivot){//arr[h] is the pivot
+            if(arr[j]<=pivot){//arr[h] is the pivot
                 i++;
                 int temp=arr[i];
                 arr[i]=arr[j];
                 arr[j]=temp;
+                countLomuto++;
             }            
         }
         int temp=arr[h];
         arr[h]=arr[i+1];
         arr[i+1]=temp;
-
+        countLomuto++;
         return i+1;
     }
 
 
-
+    static int countHoare=0;
     public static int partitionHoare(int arr[],int l,int h){
         int i=l-1;
         int j=h+1;
@@ -86,7 +88,7 @@ public class QuickSort {
             int temp=arr[i];
             arr[i]=arr[j];
             arr[j]=temp;
-
+            countHoare++;
         }                
         return j;
     }

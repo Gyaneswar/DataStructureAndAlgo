@@ -11,7 +11,6 @@ public class Permutation {
             System.out.println(String.valueOf(ch));
             return;
         }
-
         for(int j=i;j<ch.length;j++){
             Swap(ch, i, j);
             GetAllPermuatations(ch, i+1);

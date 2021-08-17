@@ -13,6 +13,8 @@ public class MergeSort {
         mergeSort(arr, 0, n - 1);
  
         System.out.println(Arrays.toString(arr));
+
+        System.out.println(countMerge);
     }
     public static void mergeSort(int arr[],int l,int r){
         
@@ -25,6 +27,7 @@ public class MergeSort {
         System.out.println(Arrays.toString(arr));
     }
 
+    static int countMerge=0;
     public static void merge(int arr[],int l,int mid,int r){
         int n1=mid-l+1;
         int n2=r-mid;
@@ -47,6 +50,7 @@ public class MergeSort {
                 j++;
                 k++;
             }
+            countMerge++;
         }
 
         while(i<n1){
