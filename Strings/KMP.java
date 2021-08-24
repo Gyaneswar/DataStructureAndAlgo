@@ -37,7 +37,7 @@ public class KMP {
             }
             else if(len==0){lps[i]=0;i++;}
             else {
-                len=lps[i-1];
+                len=lps[len-1];
             }
         }
     }

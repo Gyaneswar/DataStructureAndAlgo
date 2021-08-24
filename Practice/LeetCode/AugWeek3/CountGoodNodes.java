@@ -11,38 +11,44 @@ public class CountGoodNodes {
         root.left.left=new TreeNode(3);
         root.right.left=new TreeNode(1);
         root.right.right=new TreeNode(5);
-
-        ArrayList<TreeNode> list=new ArrayList<>();
-        InOrder(list, root);
-        for (TreeNode TreeNode : list) {
-            System.out.println(TreeNode.val);
-        }
-        ArrayList<TreeNode> path=new ArrayList<>();
-        int ans=0;
-        for(TreeNode treeNode : list){
-            findPath(root, treeNode, path);
-            boolean flag=false;
-            for (TreeNode treeNode2 : path) {
-                System.out.print("=>"+treeNode2.val);
-                if(treeNode2.val>treeNode.val) {
-                    flag=true;
-                    break;
-                }                
-            }
-            if(!flag && path.size()>0) ans++;
-            path.clear();
-            System.out.println();
-        }
+        TreeNode max=new TreeNode();
+        max.val=Integer.MIN_VALUE;
+        TreeNode prevMax=new TreeNode();
+        max.val=Integer.MIN_VALUE;
+        ArrayList<TreeNode> pq=new ArrayList<>();
+        InOrder(root,pq,max);
+        
         System.out.println(ans);
     }
 
-    public static void InOrder(ArrayList<TreeNode> arr,TreeNode root){
+    static int ans=0;
+        
+    public static void InOrder(TreeNode root,ArrayList<TreeNode> path,TreeNode max){
         if(root==null) return;
+        
+        path.add(root);
+        if(root.val>max.val){
+            max.val=root.val;
+        } 
 
-        InOrder(arr, root.left);
-        arr.add(root);
-        InOrder(arr, root.right);
+        InOrder(root.left,path,max);
+        InOrder(root.right,path,max);
+        if(root.val==max.val){
+            path.remove(path.size()-1);
+            ans++;
+            max.val=findMax(path);
+        }else {
+            path.remove(path.size()-1);
+        }
     }   
+
+    public static int findMax(ArrayList<TreeNode> arr){
+        int max=Integer.MIN_VALUE;
+        for (TreeNode integer : arr) {
+            if(integer.val>max) max=integer.val;
+        }
+        return max;
+    }
 
     public static boolean findPath(TreeNode root,TreeNode n,ArrayList<TreeNode> path){
         if(root ==  null) return false;
