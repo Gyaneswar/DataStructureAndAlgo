@@ -69,10 +69,13 @@ public class test {
 
         // System.out.println(arraylist.toString());
         
-        String s1="abcd";
-        String s2="bc";
+        // String s1="abcd";
+        // String s2="bc";
 
-        System.out.println(s2.compareTo(s1));
+        // System.out.println(s2.compareTo(s1));
+
+        String s="ABCD";
+        System.out.println(s.substring(1));
     }
 
     public static void test(int arr[][]){        
