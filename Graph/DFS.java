@@ -1,8 +1,6 @@
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 
-public class BFS {
+public class DFS {
     public static void main(String[] args) {
         ArrayList<ArrayList<Integer>> arr = new ArrayList<>();
 
@@ -18,28 +16,29 @@ public class BFS {
         AddEdge(arr, 3, 4);
         AddEdge(arr, 4, 5);
 
-        boolean visited[] = new boolean[v];
-        BreadthFirstSearch(arr, 0, visited);
+        visited = new boolean[v];
+        int source = 0;
+        DepthFirstSearch(arr, source);
 
         // i have not implemented a bfs for disconnected graph because i am lazy now
         // for disconnected graph just call bfs for all the vertices using a loop
+
+        System.out.println("|");
     }
 
-    public static void BreadthFirstSearch(ArrayList<ArrayList<Integer>> arr, int source, boolean visited[]) {
-        Queue<Integer> q = new LinkedList<>();
-        q.add(source);
+    static boolean visited[];
+
+    public static void DepthFirstSearch(ArrayList<ArrayList<Integer>> arr, int source) {
+
+        System.out.print(source + "--");
         visited[source] = true;
-        while (!q.isEmpty()) {
-            int curr = q.poll();
-            System.out.print(curr + "--");
-            for (int v : arr.get(curr)) {
-                if (!visited[v]) {
-                    q.add(v);
-                    visited[v] = true;
-                }
+        for (int i : arr.get(source)) {
+            if (!visited[i]) {
+                DepthFirstSearch(arr, i);
             }
         }
     }
+
 
     public static void AddEdge(ArrayList<ArrayList<Integer>> arr, int u, int v) {
         arr.get(v).add(u);
