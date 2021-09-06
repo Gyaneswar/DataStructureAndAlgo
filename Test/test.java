@@ -76,6 +76,9 @@ public class test {
 
         String s="ABCD";
         System.out.println(s.substring(1));
+        int trees[][]={{1,1},{2,2},{2,0},{2,4},{3,3},{4,2}};
+
+        System.out.println(trees[1].length);
     }
 
     public static void test(int arr[][]){        
