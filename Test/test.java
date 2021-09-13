@@ -75,10 +75,27 @@ public class test {
         // System.out.println(s2.compareTo(s1));
 
         String s="ABCD";
-        System.out.println(s.substring(1));
-        int trees[][]={{1,1},{2,2},{2,0},{2,4},{3,3},{4,2}};
+        // System.out.println(s.substring(1));
+        // int trees[][]={{1,1},{2,2},{2,0},{2,4},{3,3},{4,2}};
 
-        System.out.println(trees[1].length);
+        // System.out.println(trees[1].length);
+
+        StringBuilder str=new StringBuilder(s);
+
+        str.delete(0, 1);
+        System.out.println(str.toString());
+        str.append("A");
+        System.out.println(str.toString());
+
+        str.delete(str.length()-1, str.length());
+        System.out.println(str.toString());
+        str.insert(1, 'A');
+        System.out.println(str.toString());
+
+        char ch[]=s.toCharArray();
+        Arrays.sort(ch);
+        String sdfs = String.copyValueOf(ch);
+        System.out.println(sdfs);
     }
 
     public static void test(int arr[][]){        
