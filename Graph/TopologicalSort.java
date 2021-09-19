@@ -26,9 +26,7 @@ public class TopologicalSort{
         FillInDegree(inDegree, arr);
         System.out.println(Arrays.toString(inDegree));
         Sort(inDegree,arr);
-
-        int source = 0;
-        boolean visited[]=new boolean[v];
+        
     }
 
     public static void Sort(int inDegree[],ArrayList<ArrayList<Integer>> arr){
