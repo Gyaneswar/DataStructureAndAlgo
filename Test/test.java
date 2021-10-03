@@ -150,35 +150,38 @@ public class test {
         //lengthOfLongestSubstring("dvdf");
         //recur("23",0,"");
 
-        // int i=0;
-        // StringBuilder str=new StringBuilder("abcd");
-        // str.insert(i,"()");
-        // System.out.println(str.toString());
-        // str.delete(i, i+2);
-        // System.out.println(str.toString());
-        // str.insert(i+1, "()");
-        // System.out.println(str.toString());
-        // res=new ArrayList<>();
-        // recur(new StringBuilder("()"),1,2);
-        // System.out.println(res.toString());
+        int i=2;
+        StringBuilder str=new StringBuilder("abcd");
+        str.insert(str.length(),"z");
+        System.out.println(str.toString());
+        str.delete(str.length()-1, str.length());
+        System.out.println(str.toString());
+        str.insert(i+1, "()");
+        System.out.println(str.toString());
+        res=new ArrayList<>();
+        recur(new StringBuilder("()"),1,2);
+        System.out.println(res.toString());
 
-        Scanner sc=new Scanner(System.in);        
-        char ch=sc.next().charAt(0);
-        char ch1=sc.next().charAt(0);
-        System.out.println(ch+"--"+ch1);
+        char ch=(char)((int)'a'+i);
+        System.out.println(ch);
 
-        char ch2[][]={{'a','b','c'},{'a','b','c'},{'a','b','c'}};
+        // Scanner sc=new Scanner(System.in);        
+        // char ch=sc.next().charAt(0);
+        // char ch1=sc.next().charAt(0);
+        // System.out.println(ch+"--"+ch1);
 
-        char ch3[][]=ch2.clone();
+        // char ch2[][]={{'a','b','c'},{'a','b','c'},{'a','b','c'}};
 
-        Arrays.fill(ch2[0],'d');
+        // char ch3[][]=ch2.clone();
 
-        for(int i=0;i<3;i++){
-            for(int j=0;j<3;j++){
-                System.out.print(ch3[i][j]+" ");
-            }
-            System.out.println();
-        }
+        // Arrays.fill(ch2[0],'d');
+
+        // for(int i=0;i<3;i++){
+        //     for(int j=0;j<3;j++){
+        //         System.out.print(ch3[i][j]+" ");
+        //     }
+        //     System.out.println();
+        // }
 
     }
     static List<String> res;

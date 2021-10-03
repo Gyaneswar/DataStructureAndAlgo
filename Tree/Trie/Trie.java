@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Stack;
@@ -20,37 +21,64 @@ public class Trie {
 
         System.out.println("Word to delete : ");
         String del=sc.next();
-        boolean exist=Search(del, root);
-        System.out.println("Does the word exist : "+exist);
 
-        if(exist){   
-            TrieNode copyRoot=root;
-            System.out.println(Delete(del, copyRoot));
-        }        
+        //delete still works just commented for simplicity
+        //boolean exist=Search(del, root);
+        //System.out.println("Does the word exist : "+exist);
+
+        // if(exist){   
+        //     TrieNode copyRoot=root;
+        //     System.out.println(Delete(del, copyRoot));
+        // }        
 
         while(true){
             System.out.print("Enter the pattern to search (exit to quit) : ");
             String pattern=sc.next();
             if(pattern.equals("exit"))
                 break;
-            System.out.println(Search(pattern,root));
+            System.out.println(Search(pattern,root).toString());
+            count=0;
+            res.clear();
         }
         
     }
 
-    public static boolean Search(String pattern,TrieNode root){
+    public static ArrayList<String> Search(String pattern,TrieNode root){
         TrieNode cursor=root;
+        res=new ArrayList<>();
         for(int i=0;i<pattern.length();i++){
             int index=(int)pattern.charAt(i)-97;
             if(cursor.ch[index]==null)
-                return false;
+                return res;
             else
                 cursor=cursor.ch[index];
         }
-        if(cursor.isComplete)
-            return true;
-        else 
-            return false;
+
+        StringBuilder patt = new StringBuilder(pattern);
+        findWords(patt, cursor);
+        return res;
+        
+    }
+
+    static int count=0;
+    static ArrayList<String> res;
+    public static void findWords(StringBuilder pattern,TrieNode cursor){
+        if(cursor.isComplete){
+            res.add(pattern.toString());
+            count++;
+        }
+        if(cursor == null) return;        
+        if(count>=3) return;
+        for(int i=0;i<26;i++){            
+            if(cursor.ch[i]!=null){
+                char ch=(char)((int)'a'+i);
+                pattern.append(ch);                 
+                findWords(pattern,cursor.ch[i]);
+                pattern.delete(pattern.length()-1, pattern.length());
+                if(count>=3) return;
+            }
+        }
+        return;
     }
 
     public static String Delete(String word,TrieNode root){
