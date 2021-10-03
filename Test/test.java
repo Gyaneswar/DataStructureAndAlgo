@@ -2,6 +2,7 @@
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Stack;
+import java.util.*;
 import java.util.ArrayList;
 
 public class test {
@@ -97,18 +98,113 @@ public class test {
         // Arrays.sort(ch);
         // String sdfs = String.copyValueOf(ch);
         // System.out.println(sdfs);
-        Stack<String> st=new Stack<>();
-        String s="+1";
-        String c=Character.toString(s.charAt(0));
-        st.push((String)c);
-        StringBuilder str=new StringBuilder(s);
-        str.delete(1, 2);
-        System.out.println(str.toString());
-    }
+        // Stack<String> st=new Stack<>();
+        // String s="+1";
+        // String c=Character.toString(s.charAt(0));
+        // st.push((String)c);
+        // StringBuilder str=new StringBuilder(s);
+        // str.delete(1, 2);        
+        // System.out.println(str.toString());
+        // str.insert(1,'1');
+        // System.out.println(str.toString());
 
-    public static void test(int arr[][]){        
-            System.out.println(arr[0]);
+        // List<String> arr=new LinkedList<>();
+        // arr.add("apple");
+        // arr.add("mango");
+        // arr.add("orange");
+
+        // arr.remove(1);
+
+        // arr.add("mango");
+
+        // System.out.println(arr.toString());
+
+
+        // HashSet<String> set=new HashSet<>();
+        // set.add("apple");
+        // set.add("apple");
+        // set.add("mango");
+        // set.add("orange");
+
+        // set.remove("apple");
+        // set.add("appple");
+        // System.out.println(set.toString());
+
+        // for (Iterator<String> it = set.iterator(); it.hasNext();) {
+        //     String temp=it.next();
+        //     it.remove();
+        //     System.out.println(set.toString());
+        //     //it.add(temp);
+        //     set.add(temp);
+        // }
+
+        // StringBuilder str=new StringBuilder("hello");
+        // //str.replace(1, 2, "tttt");
+        // str.delete(str.length()-1,str.length());
+
+        // String s="hello";
+        // System.out.println(s.substring(0,s.length()-1));
+
+        //System.out.println(str.toString());
+
+        //lengthOfLongestSubstring("dvdf");
+        //recur("23",0,"");
+
+        // int i=0;
+        // StringBuilder str=new StringBuilder("abcd");
+        // str.insert(i,"()");
+        // System.out.println(str.toString());
+        // str.delete(i, i+2);
+        // System.out.println(str.toString());
+        // str.insert(i+1, "()");
+        // System.out.println(str.toString());
+        // res=new ArrayList<>();
+        // recur(new StringBuilder("()"),1,2);
+        // System.out.println(res.toString());
+
+        Scanner sc=new Scanner(System.in);        
+        char ch=sc.next().charAt(0);
+        char ch1=sc.next().charAt(0);
+        System.out.println(ch+"--"+ch1);
+
+        char ch2[][]={{'a','b','c'},{'a','b','c'},{'a','b','c'}};
+
+        char ch3[][]=ch2.clone();
+
+        Arrays.fill(ch2[0],'d');
+
+        for(int i=0;i<3;i++){
+            for(int j=0;j<3;j++){
+                System.out.print(ch3[i][j]+" ");
+            }
+            System.out.println();
+        }
+
     }
+    static List<String> res;
+    static HashSet<String> set=new HashSet<>();
+    public static void recur(StringBuilder str,int index,int n){
+        if(index == n){
+            if(set.add(str.toString())){
+                res.add(str.toString());
+            }
+            return;
+        }
+        
+        
+        for(int i=0;i<str.length();i++){
+            if(str.charAt(i) == '('){
+                str.insert(i,"()");
+                recur(str,index + 1,n);
+                str.delete(i,i+2);
+                str.insert(i+1,"()");
+                recur(str,index + 1,n);
+                str.delete(i+1,i+3);
+            }
+        }
+        return;
+    }
+    
 }
 
 

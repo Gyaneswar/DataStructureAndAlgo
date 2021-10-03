@@ -42,6 +42,13 @@ public class MinHeapInsert{
         System.out.println(Arrays.toString(arr));
     }
 
+    public static void decreaseKey(int arr[],int i){
+        while(i!=0 && arr[GetParent(i)]>arr[i]){
+            Swap(arr, GetParent(i), i);
+            i=GetParent(i);
+        }
+    }
+
     public static void Swap(int arr[],int child,int parent){        
         int temp=arr[child];
         arr[child]=arr[parent];
