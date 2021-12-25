@@ -1,3 +1,4 @@
+package Practice.CodeForces.Sharding_2;
 import java.util.*;
 public class Div2_683B {
     public static void main(String[] args) {

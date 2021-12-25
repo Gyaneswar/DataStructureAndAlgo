@@ -1,3 +1,4 @@
+package Practice.CodeForces.Sharding_2;
 import java.util.*;
 public class GlobalRound12 {
     public static void main(String[] args) {
