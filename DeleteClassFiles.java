@@ -20,7 +20,7 @@ public class DeleteClassFiles {
         System.out.print("Please type Y/N to confirm the deletion : ");
         String confirm=sc.next();
         if(Directory.isDirectory() && confirm.equalsIgnoreCase("Y")){
-            String contents[]=Directory.list();        
+            String contents[]=Directory.list();
             String path=Directory.getPath();                        
             for(int i=0;i<contents.length;i++){
                 if(contents[i].charAt(0)!='.'){
