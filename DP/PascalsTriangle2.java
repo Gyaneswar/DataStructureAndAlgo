@@ -1,6 +1,6 @@
 package DP;
 import java.util.*;
-class PascalsTriangle {
+class PascalsTriangle2 {
     public List<Integer> getRow(int rowIndex) {
         List<Integer> arr = new ArrayList<>();
         arr.add(1);
