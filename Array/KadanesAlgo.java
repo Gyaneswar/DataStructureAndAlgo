@@ -18,3 +18,12 @@ public class KadanesAlgo {
     }
     
 }
+
+
+/*
+select * from (
+    select name,sal dense_rank() 
+    over (order by sal desc) r from employee)
+    where r = &n
+)
+*/
