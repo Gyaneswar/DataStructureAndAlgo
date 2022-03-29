@@ -1,9 +1,8 @@
 # DataStructureAndAlgo
 - This repo is created to help anyone who is interested in datastructure and algorithms. 
-- The code is mainly written in java and some of the programs in c# .
+- The code is mainly written in java .
 - Any one willing to contribute is free to use any OO language.
 - I continously update this repo.
-- Everyone is invited to update this repo.
 
 ## Casing
 - Class names , function names : Pascal casing
