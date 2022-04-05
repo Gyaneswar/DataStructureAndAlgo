@@ -2,37 +2,35 @@ import java.util.Arrays;
 
 public class LongestIncreasingSubsequence {
     public static void main(String[] args) {
-        int arr[] = { 10, 6, 5, 8, 11, 2, 20 };
+        int arr[] = { 3,4,-1,0,6,2,3 };
 
-        dp = new int[arr.length];
+        int dp[][] = new int[arr.length][arr.length];        
+        int result = recur(arr, 0, Integer.MIN_VALUE,dp);
+        System.out.println(result);
 
-        recur(arr, 0, Integer.MIN_VALUE);
+        //int ans = Arrays.stream(dp).max().getAsInt();
+        for(int i=0;i<arr.length;i++)
+            System.out.println(Arrays.toString(dp[i]));
+        //System.out.println(ans);
 
-        int ans = Arrays.stream(dp).max().getAsInt();
-        System.out.println(Arrays.toString(dp));
-        System.out.println(ans);
+    }    
 
-    }
-
-    static int dp[];
-
-    public static int recur(int arr[], int index, int val) {
-        if (index >= arr.length)
+    public static int recur(int arr[], int index, int prev,int dp[][]) {
+        if(index == arr.length)
             return 0;
-        // if (dp[index] > 0)
-        //     return dp[index];
 
-        int temp1 = 0, temp2 = 0, temp3 = 0;
+        if(prev != Integer.MIN_VALUE && dp[index][prev] > 0)
+            return dp[index][prev];
 
-        if (arr[index] > val)
-            temp1 = 1 + recur(arr, index + 1, arr[index]);
-        else
-            temp2 = recur(arr, index + 1, val);
+        int select = 0,notSelect = 0;
+        if(prev == Integer.MIN_VALUE || arr[index] > arr[prev])
+            select = 1 + recur(arr, index+1, index,dp);
+        notSelect = recur(arr,index+1,prev,dp);
 
-        temp3 = recur(arr, index + 1, val);
-        dp[index] = Math.max(temp1, Math.max(temp2, temp3));
+        if(prev != Integer.MIN_VALUE)
+            dp[index][prev] = Math.max(select,notSelect);
 
-        return dp[index];
+        return Math.max(select,notSelect);
     }
 
     public static int dpSolution(int arr[]){
