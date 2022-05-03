@@ -24,12 +24,12 @@ public static void main(String[] args) {
 public static int binarySearch(int arr[],int l,int r,int item){    
     while(r>l+1){
     int mid=(l+r)/2;
-    if(arr[mid]<item){
-        l=mid;
-    }else{
+    if(arr[mid]>item){
         r=mid;
+    }else{
+        l=mid;
     }
     }
-    return r+1;
+    return r-1;
 }
 }
