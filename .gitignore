@@ -3,3 +3,8 @@
 Target.txt
 Practice/
 Algorithms/
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.gitignore
+DataStructureAndAlgo.iml
