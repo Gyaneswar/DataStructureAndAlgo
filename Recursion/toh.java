@@ -2,6 +2,7 @@ public class toh{
     public static void main(String[] args) {
         tohfun(3,"A", "B", "C");
     }
+    //                                    from     aux      to
     public static void tohfun(int n,String a,String b,String c){
         if(n==1){
             System.out.println("move from "+a+ "to"+ c);            
