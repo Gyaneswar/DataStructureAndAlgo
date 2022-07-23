@@ -23,7 +23,7 @@ public class MCM {
         for(int k=i;k<j;k++){
             int leftCost = recursive(arr, i, k);
             int rightCost = recursive(arr, k+1, j);
-            int totalCost = leftCost + rightCost + (arr[i] * arr[k] * arr[j]);
+            int totalCost = leftCost + rightCost + (arr[i] * arr[k] * arr[j]); //last part is cost for merging of left and right
             if(totalCost < min)
                 min = totalCost;
         }
