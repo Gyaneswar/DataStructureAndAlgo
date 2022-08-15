@@ -5,9 +5,9 @@ public class TwoOddRecurring {
         for(int i=0;i<arr.length;i++){
             xor=xor^arr[i];
         }
-        System.out.println(xor);
+        int sn = xor & ~(xor-1);
         for(int i=0;i<arr.length;i++){
-            if((xor & (~arr[i]-1)) !=0)
+            if((arr[i] & sn) !=0 )
                 res1=res1^arr[i];
             else
                 res2=res2^arr[i];
