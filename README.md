@@ -4,8 +4,8 @@
 - Any one willing to contribute is free to use any OO language.
 
 ## Casing
-- Class names , function names : Pascal casing
-- variables : camel casing
-- global variables : camel casing beginning with a underscore
+- Class names : Pascal casing
+- Function names , variables : camel casing
+- global variables : snake casing
 
 ### Thanks
