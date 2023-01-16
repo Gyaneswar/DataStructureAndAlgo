@@ -26,13 +26,16 @@ class Heap {
 class MinHeap{
     private int arr[];
     private int index;
+    private int capacity;
     public MinHeap(){
         this.index = -1;
         this.arr = new int[100];
+        this.capacity = 100;
     }
     public MinHeap(int size){
         this.index = -1;
         this.arr = new int[size];
+        this.capacity = 100;
     }
 
     public boolean insert(int ele){
