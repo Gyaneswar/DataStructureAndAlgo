@@ -1,3 +1,5 @@
+
+//considering account managers get customers from 0 month
 import java.util.*;
 
 class RevenueSimulation {
@@ -17,52 +19,70 @@ class RevenueSimulation {
 
     public static void main(String[] args) {
         RevenueSimulation revenue = new RevenueSimulation();
-        revenue.recur(0,revenue.initialCustomers);
-        for(Map.Entry<Integer,double[]> ele: revenue.history.entrySet())
-            System.out.println(ele.getKey()+" "+Arrays.toString(ele.getValue()));
+        revenue.recur(0, revenue.initialCustomers, 0, 0, new int[] { 0, 0, 0, 0, 0, 0, 0 });
+        for (Map.Entry<Integer, double[]> ele : revenue.history.entrySet())
+            System.out.println(ele.getKey() + " " + Arrays.toString(ele.getValue()));
     }
 
-    //store the max allocation for each month
-    private HashMap<Integer,double[]> history = new HashMap<>();
-    private HashMap<String,Double> map = new HashMap<>();
+    // store the max allocation for each month
+    private HashMap<Integer, double[]> history = new HashMap<>();
+    private HashMap<String, Double> map = new HashMap<>();
 
-    private double recur(int currMonth,int customers) {
+    private double recur(int currMonth, int customers, int xbusiness, int xaccount, int customerAccountMap[]) {
         if (currMonth > 24) {
-            return 0;
+            return initialCustomers * baselineRevenue;
         }
 
-        if(map.containsKey(customers+"-"+currMonth))
-            return map.get(customers+"-"+currMonth);
+        if (map.containsKey(customers+"-"+xbusiness + "-" + xaccount))
+            return map.get(customers+"-"+xbusiness + "-" + xaccount);
 
-        double max = Double.MIN_VALUE;        
-        int business = 0, account = 0, cSupport = 0;
+        double max = -1;
+        int maxCustAccMap[] = customerAccountMap;
+        int business = 0, account = 0, cSupport = 0, nCustomers = 0;
         for (int newBusiness = 0; newBusiness <= N; newBusiness++) {
             for (int accountManagement = 0; accountManagement <= N - newBusiness; accountManagement++) {
                 int support = N - newBusiness - accountManagement;
-                double result[] = simulateRevenue(currMonth,accountManagement,newBusiness,support,customers);
-                double value =  recur((currMonth + 1),(int)result[1]);
+                int arr[] = copyArray(customerAccountMap);
+                double result[] = simulateRevenue(accountManagement, newBusiness, support, customers,
+                arr);                
+                double value = recur((currMonth + 1), (int) result[1], business, account,
+                arr);
                 result[0] += value;
                 if (result[0] > max) {
                     max = result[0];
                     business = newBusiness;
                     account = accountManagement;
                     cSupport = support;
+                    nCustomers = (int) result[1];
+                    maxCustAccMap = arr;
                 }
             }
-        }
-        //System.out.println(currMonth+" "+ max + " " + account + " " + business + " "+ cSupport);
-        history.put(currMonth,new double[]{max,account,business,cSupport});
-        map.put(customers+"-"+currMonth,max);
+        }   
+        
+        //System.out.println(Arrays.toString(maxCustAccMap));
+        if (history.containsKey(currMonth) && history.get(currMonth)[1] < max)
+            history.put(currMonth, new double[] { nCustomers, max, account, business, cSupport });
+        else if (!history.containsKey(currMonth))
+            history.put(currMonth, new double[] { nCustomers, max, account, business, cSupport });
+
+        map.put(customers+"-"+xbusiness + "-" + xaccount, max);
         return max;
     }
 
-    private double[] simulateRevenue(int month, int accountManagement,int newBusiness,int support,int customers) {
+    private int[] copyArray(int[] customerAccountMap) {
+        int arr[] = new int[customerAccountMap.length];
+        for (int i = 0; i < customerAccountMap.length; i++)
+            arr[i] = customerAccountMap[i];
+
+        return arr;
+    }
+
+    private double[] simulateRevenue(int accountManagement, int newBusiness, int support, int customers,
+            int customerAccountMap[]) {                
         // Calculate revenue from existing customers
-        double revenue = customers * baselineRevenue;
-        for (int i = 0; i < accountManagement; i++) {
-            revenue += baselineRevenue * customersManagedPerAccountManager *
-                    (1 + (month < 6 ? month : 6) * revenueIncreaseRate);
-        }
+
+        // Calculate revenue from existing customers
+        double revenue = 0.0;// customers * baselineRevenue;
 
         // Calculate revenue from organic growth
         customers += organicGrowth;
@@ -73,16 +93,61 @@ class RevenueSimulation {
         customers += newCustomersAcquired;
         revenue += newCustomersAcquired * baselineRevenue;
 
-        // Calculate revenue after churn
-        double customersLost = customers * initalChurnRate;
-        revenue -= (customersLost * baselineRevenue);
-        customers -= customersLost;
+        customerAccountMap[0] += newCustomersAcquired + organicGrowth;
+
+        // Calculate revenue from account management
+        double accountManagerRevenue = 0;
+        int accountManagementPower = customersManagedPerAccountManager * accountManagement;
+        for (int k = customerAccountMap.length - 1; k >= 0; k--) {
+            if (accountManagementPower == 0 || customerAccountMap[k] == 0)
+                break;
+            double compoundedRevenue = baselineRevenue * Math.pow(1 + revenueIncreaseRate, k);
+            if (customerAccountMap[k] > accountManagementPower) {
+                if (accountManagementPower < customerAccountMap[k]) {
+                    accountManagerRevenue += customersManagedPerAccountManager * compoundedRevenue;
+                    accountManagementPower -= accountManagementPower - customerAccountMap[k];
+                } else {
+                    accountManagerRevenue += customerAccountMap[k] * compoundedRevenue;
+                    accountManagementPower -= accountManagementPower - customerAccountMap[k];
+                }
+            }
+        }
+        revenue += accountManagerRevenue;
 
         // Calculate revenue increase due to CSAT improvement
-        //churn(t) = 0.1 * (1 - 0.15 * csat(t))
-        double newChurnRate = initalChurnRate * (1 - churnRateDecrease * support);
-        revenue += (customers * (initalChurnRate - newChurnRate) * baselineRevenue)/12;
+        // Churn(t) = 0.1 * (1 - 0.15 * CSAT(t))
+        double csat = support; // Initial CSAT plus support increase
+        double newChurnRate = initalChurnRate * (1 - churnRateDecrease * csat);
+        if (newChurnRate > 0)
+            revenue += (customers * (initalChurnRate - newChurnRate) * baselineRevenue) / 12;
+        // Calculate revenue after churn
+        double customersLost = Math.round(customers * newChurnRate) / 12;
 
-        return new double[]{revenue,customers};
+        if (newChurnRate > 0)
+            customers -= customersLost;
+        else
+            customersLost = 0;
+
+        shiftToRight(customerAccountMap, (int) customersLost);        
+
+        return new double[] { revenue, customers };
+    }
+
+    private void shiftToRight(int customerAccountMap[], int customersLost) {
+        for (int i = customerAccountMap.length - 1; i >= 1; i--) {
+            customerAccountMap[i] += customerAccountMap[i - 1];
+            customerAccountMap[i - 1] = 0;
+            if (customersLost == 0)
+                continue;
+            if (customerAccountMap[i] > 0) {
+                if (customerAccountMap[i] > customersLost) {
+                    customerAccountMap[i] -= customersLost;
+                    customersLost = 0;
+                } else {
+                    customersLost -= customerAccountMap[i];
+                    customerAccountMap[i] = 0;
+                }
+            }
+        }
     }
 }
