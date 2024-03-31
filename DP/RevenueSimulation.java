@@ -33,10 +33,10 @@ class RevenueSimulation {
             return initialCustomers * baselineRevenue;
         }
 
-        if (map.containsKey(customers+"-"+xbusiness + "-" + xaccount))
-            return map.get(customers+"-"+xbusiness + "-" + xaccount);
+        if (map.containsKey(customers+"-"+currMonth+"-"+xbusiness + "-" + xaccount))
+            return map.get(customers+"-"+currMonth+"-"+xbusiness + "-" + xaccount);
 
-        double max = -1;
+        double max = -1, maxPerMonth = -1;
         int maxCustAccMap[] = customerAccountMap;
         int business = 0, account = 0, cSupport = 0, nCustomers = 0;
         for (int newBusiness = 0; newBusiness <= N; newBusiness++) {
@@ -47,9 +47,10 @@ class RevenueSimulation {
                 arr);                
                 double value = recur((currMonth + 1), (int) result[1], business, account,
                 arr);
-                result[0] += value;
-                if (result[0] > max) {
-                    max = result[0];
+                value += result[0];
+                if (value > max) {
+                    max = value;
+                    maxPerMonth = result[0];
                     business = newBusiness;
                     account = accountManagement;
                     cSupport = support;
@@ -61,11 +62,11 @@ class RevenueSimulation {
         
         //System.out.println(Arrays.toString(maxCustAccMap));
         if (history.containsKey(currMonth) && history.get(currMonth)[1] < max)
-            history.put(currMonth, new double[] { nCustomers, max, account, business, cSupport });
+            history.put(currMonth, new double[] { nCustomers, account, business, cSupport });
         else if (!history.containsKey(currMonth))
-            history.put(currMonth, new double[] { nCustomers, max, account, business, cSupport });
+            history.put(currMonth, new double[] { nCustomers, account, business, cSupport });
 
-        map.put(customers+"-"+xbusiness + "-" + xaccount, max);
+        map.put(customers+"-"+currMonth+"-"+xbusiness + "-" + xaccount, max);
         return max;
     }
 
@@ -119,9 +120,9 @@ class RevenueSimulation {
         double csat = support; // Initial CSAT plus support increase
         double newChurnRate = initalChurnRate * (1 - churnRateDecrease * csat);
         if (newChurnRate > 0)
-            revenue += (customers * (initalChurnRate - newChurnRate) * baselineRevenue) / 12;
+            revenue += (customers * (initalChurnRate - newChurnRate) * baselineRevenue);
         // Calculate revenue after churn
-        double customersLost = Math.round(customers * newChurnRate) / 12;
+        double customersLost = Math.round(customers * newChurnRate);
 
         if (newChurnRate > 0)
             customers -= customersLost;
